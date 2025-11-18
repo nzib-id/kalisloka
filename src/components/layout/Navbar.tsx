@@ -79,7 +79,7 @@ const Navbar: React.FC = () => {
               {/* DESKTOP MENU */}
               <div
                 className={`
-                  hidden md:flex items-center space-x-20 text-sm font-medium
+                  hidden md:flex items-center space-x-20 text-sm font-semibold
                   transition-colors duration-300
                   ${green ? "text-[#004035]" : "text-white"}
                 `}
