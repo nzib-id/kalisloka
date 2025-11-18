@@ -8,6 +8,7 @@ import AboutSection from "./sections/AboutSection";
 import ProductSection from "./sections/ProductSection";
 import ServiceSection from "./sections/ServiceSection";
 import ContactSection from "./sections/Contact";
+import SupplyCooperationSection from "./sections/SupplyCooperationSection";
 
 const HomePage: React.FC = () => {
   return (
@@ -16,6 +17,7 @@ const HomePage: React.FC = () => {
       <AboutSection />
       <ProductSection />
       <ServiceSection />
+      <SupplyCooperationSection />
       <ContactSection />
     </Layout>
   );
