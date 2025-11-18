@@ -1,30 +1,45 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+/* ====== BODY FONT (Google Font: Montserrat) ====== */
+const montserrat = Montserrat({
+  variable: "--font-body",
   subsets: ["latin"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
+/* ====== METADATA ====== */
 export const metadata: Metadata = {
   title: "Kalisloka",
-  description: "",
+  description:
+    "Official website of Kalisloka — Agricultural Raw Material Supply & Trade Partner.",
+  icons: {
+    icon: "/icons/favicon.svg",
+    shortcut: "/icons/favicon.svg",
+  },
 };
 
+/* ====== ROOT LAYOUT ====== */
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <head>
+        {/* PRELOAD CUSTOM HEADING FONT */}
+        <link
+          rel="preload"
+          href="/fonts/LT-Glockenspiel.ttf"
+          as="font"
+          type="font/ttf"
+          crossOrigin="anonymous"
+        />
+      </head>
+
+      <body className={`${montserrat.variable} font-body`}>
         {children}
       </body>
     </html>

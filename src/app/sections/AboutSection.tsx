@@ -12,7 +12,7 @@ const AboutSection: React.FC = () => {
           w-full max-w-[1400px]
 
           /* overlap halus */
-          -top-8 md:-top-16
+          -top-10 md:-top-16
 
           bg-[#E6FFCF]
           rounded-t-[45px] md:rounded-t-[60px]
@@ -28,9 +28,9 @@ const AboutSection: React.FC = () => {
           {/* LOGO */}
           <div className="flex justify-center mb-12 md:mb-16">
             <img
-              src="/images/logo.png"
+              src="/images/logo.svg"
               alt="Kalisloka"
-              className="w-[170px] md:w-[240px] h-auto"
+              className="w-[170px] md:w-[390px] h-auto"
             />
           </div>
 

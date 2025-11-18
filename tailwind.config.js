@@ -7,10 +7,10 @@ module.exports = {
     container: {
       center: false,
       padding: {
-        DEFAULT: "2rem", // mobile
-        lg: "6rem",       // tablet
-        xl: "8rem",       // desktop standar
-        "2xl": "10rem",   // large screen (DESAIN KALISLOKA)
+        DEFAULT: "2rem",
+        lg: "6rem",
+        xl: "8rem",
+        "2xl": "10rem",
       },
     },
     extend: {

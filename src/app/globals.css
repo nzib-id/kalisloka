@@ -18,9 +18,8 @@ body {
 
 @font-face {
   font-family: "LT Glockenspiel";
-  src: url("/fonts/LTGlockenspiel.ttf") format("ttf");
-  font-weight: 400;
-  font-style: normal;
+  src: url("/fonts/LT-Glockenspiel.ttf") format("truetype");
+  font-weight: 900;
   font-display: swap;
 }
 

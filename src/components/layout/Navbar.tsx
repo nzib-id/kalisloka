@@ -1,57 +1,61 @@
 "use client";
+
 import React, { useState, useEffect } from "react";
 
 const Navbar: React.FC = () => {
   const [open, setOpen] = useState(false);
-  const [green, setGreen] = useState(false); // warna nav
+  const [green, setGreen] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
+  // ---- Prevent Hydration Mismatch ----
   useEffect(() => {
-  const handleScroll = () => {
-    const hero = document.getElementById("hero");
-    const contact = document.getElementById("contact");
+    setMounted(true);
+  }, []);
 
-    if (!hero || !contact) return;
+  // ---- Scroll Logic ----
+  useEffect(() => {
+    if (!mounted) return;
 
-    const scrollY = window.scrollY;
-    const heroHeight = hero.offsetHeight;
+    const handleScroll = () => {
+      const hero = document.getElementById("hero");
+      const contact = document.getElementById("contact");
+      if (!hero || !contact) return;
 
-    // Cek apakah contact masuk viewport
-    const contactRect = contact.getBoundingClientRect();
+      const scrollY = window.scrollY;
+      const heroHeight = hero.offsetHeight;
 
-    // Jika contact sudah terlihat > 20px di layar → navbar putih
-    if (contactRect.top <= 100) {
-      setGreen(false);
-      return;
-    }
+      const contactRect = contact.getBoundingClientRect();
 
-    // Jika melewati hero → navbar hijau
-    if (scrollY > heroHeight - 80) {
-      setGreen(true);
-    } else {
-      setGreen(false);
-    }
-  };
+      // Masuk Contact → kembali putih
+      if (contactRect.top <= 120) {
+        setGreen(false);
+        return;
+      }
 
-  window.addEventListener("scroll", handleScroll);
-  return () => window.removeEventListener("scroll", handleScroll);
-}, []);
+      // Setelah lewat Hero → hijau
+      if (scrollY > heroHeight - 80) {
+        setGreen(true);
+      } else {
+        setGreen(false);
+      }
+    };
 
+    handleScroll(); // initial load
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [mounted]);
 
   return (
     <nav
       className="
         fixed top-0 left-0 w-full z-50
-        bg-transparent
-        backdrop-blur-sm
+        bg-transparent backdrop-blur-sm
       "
     >
-      <div
-        className="
-          w-full py-5
-          flex items-center justify-between container mx-auto
-        "
-      >
-       {/* Logo */}
+      <div className="w-full py-5 flex items-center justify-between container mx-auto">
+
+        {/* LOGO */}
         <a href="#hero" className="transition-opacity duration-200">
           <img
             src={green ? "/logo.svg" : "/logo.svg"}
@@ -74,7 +78,8 @@ const Navbar: React.FC = () => {
 
         {/* MOBILE HAMBURGER */}
         <button
-          className={`md:hidden text-3xl transition-colors duration-200
+          className={`
+            md:hidden text-3xl transition-colors duration-200
             ${green ? "text-[#004035]" : "text-white"}
           `}
           onClick={() => setOpen(!open)}
@@ -83,15 +88,14 @@ const Navbar: React.FC = () => {
         </button>
       </div>
 
-      {/* MOBILE DROPDOWN */}
+      {/* MOBILE MENU */}
       {open && (
         <div
           className={`
-            md:hidden
-            backdrop-blur-md
-            px-6 py-4
+            md:hidden backdrop-blur-md px-6 py-4
             flex flex-col space-y-4 justify-center items-center
-          ${green ? "text-[#004035]" : "text-white"}`}
+            ${green ? "text-[#004035]" : "text-white"}
+          `}
         >
           <a onClick={() => setOpen(false)} href="#about" className="hover:opacity-70 transition">
             About us
@@ -104,6 +108,7 @@ const Navbar: React.FC = () => {
           </a>
         </div>
       )}
+
     </nav>
   );
 };

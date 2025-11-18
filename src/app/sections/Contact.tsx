@@ -14,7 +14,7 @@ const ContactSection: React.FC = () => {
         pt-20 md:pt-28
         pb-24
         text-center
-        text-[#E8FAD9]
+        text-[#E6FFCF]
       "
     >
       {/* TITLE */}
@@ -36,7 +36,7 @@ const ContactSection: React.FC = () => {
           href="mailto:hello@kalisloka.com"
           className="
             flex items-center gap-3
-            bg-[#E8FAD9]
+            bg-[#E6FFCF]
             text-[#004035]
             rounded-full
             px-8 py-3
