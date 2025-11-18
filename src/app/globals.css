@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+/* Import Tailwind core */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Reset scroll behavior default */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Body styling global */
+body {
+  @apply bg-[#E6FFCF] text-[#1E1E1E];
+   font-family: 'Montserrat', sans-serif;
+}
+
+@font-face {
+  font-family: "LT Glockenspiel";
+  src: url("/fonts/LTGlockenspiel.ttf") format("ttf");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "LT Glockenspiel", serif;
+}
+
+h2 {
+  font-weight: 900px;
+}
