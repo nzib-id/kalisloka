@@ -12,7 +12,7 @@ const points = [
   },
   {
     label: "Documentation",
-    text: "aligned with destination-based logistics",
+    text: "standard export documentation",
   },
   {
     label: "Planning",
@@ -48,28 +48,46 @@ const SupplyCooperationSection: React.FC = () => {
       >
         {/* ROW LIST */}
         <div className="flex flex-col space-y-3">
-  {points.map((item, idx) => (
-    <div
-      key={idx}
-      className="
-        text-sm md:text-base
-        flex items-start
-        border-b border-[#A4BE8B]/60
-        pb-4
-      "
-    >
-      {/* LABEL (auto width, no wrap) */}
-      <span className="font-bold font-heading text-[#004035] whitespace-nowrap pr-3">
-        {item.label}:
-      </span>
+          {points.map((item, idx) => (
+            <div
+              key={idx}
+              className="
+                text-sm md:text-base
+                flex items-start
+                border-b border-[#A4BE8B]/60
+                pb-4
+              "
+            >
+              {/* LABEL — responsive width strategy */}
+              <span
+                className="
+                  font-bold font-heading text-[#004035]
+                  whitespace-nowrap pr-3
+                  min-w-[95px]
+                  max-w-[130px]
+                  md:min-w-0
+                  md:max-w-none
 
-      {/* TEXT */}
-      <span className="text-[#1E1E1E] leading-relaxed flex-1">
-        {item.text}
-      </span>
-    </div>
-  ))}
-</div>
+                  text-[15px] md:text-[20px] lg:text-[26px] xl:text-[28px]
+                "
+              >
+                {item.label}:
+              </span>
+
+              {/* TEXT */}
+              <span
+                className="
+                  text-[#004035]
+                  flex-1 leading-relaxed
+                  text-[12px] sm:text-[15px] md:text-[18px]
+                "
+              >
+                {item.text}
+              </span>
+            </div>
+          ))}
+        </div>
+
 
 
 

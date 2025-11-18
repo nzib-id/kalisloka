@@ -6,7 +6,7 @@ import React from "react";
 const products = [
   {
     title: "Fresh Ginger",
-    image: "/images/ginger.png",
+    image: "/images/ginger.svg",
     desc: "Cleaned and graded fresh ginger supplied as raw material for processing, extraction, and blending.",
     points: [
       "Clean & graded",
@@ -17,7 +17,7 @@ const products = [
   },
   {
     title: "Banana Leaf",
-    image: "/images/banana.png",
+    image: "/images/banana.svg",
     desc: "Food-grade banana leaf for packaging, culinary, and horeca.",
     points: [
       "Sheets / rolls",
@@ -52,7 +52,7 @@ const ProductSection: React.FC = () => {
           md:grid-cols-2
           gap-10
           place-items-start
-          items-stretch          /* <— Wajib untuk samain tinggi card */
+          items-stretch
           max-w-[850px]
           mx-auto
                   ">

@@ -3,20 +3,20 @@ import React from "react";
 
 const services = [
   {
-    title: "Product\nSourcing &\nCollection",
-    icon: "/icons/sourcing.svg",
+    title: "Product Sourcing Collection",
+    icon: "/icons/service/sourcing.svg",
   },
   {
-    title: "Cleaning &\nSorting",
-    icon: "/icons/cleaning.svg",
+    title: "Cleaning & Sorting",
+    icon: "/icons/service/cleaning.svg",
   },
   {
-    title: "Pre-\nShipment\nCheck",
-    icon: "/icons/shipment.svg",
+    title: "Pre-Shipment Check",
+    icon: "/icons/service/shipment.svg",
   },
   {
-    title: "Packing &\nLabelling",
-    icon: "/icons/packing.svg",
+    title: "Packing Labelling",
+    icon: "/icons/service/packing.svg",
   },
 ];
 
@@ -63,7 +63,10 @@ const ServiceSection: React.FC = () => {
             <img
               src={item.icon}
               alt={item.title}
-              className="w-10 h-10 object-contain mb-3 opacity-80"
+              className="w-10 h-10 sm:w-10 sm:h-10
+    md:w-12 md:h-12
+    lg:w-14 lg:h-14
+    xl:w-16 xl:h-16     object-contain mb-3 opacity-80"
             />
 
             {/* TITLE */}
