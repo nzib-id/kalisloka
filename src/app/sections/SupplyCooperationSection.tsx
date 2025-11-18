@@ -39,9 +39,9 @@ const SupplyCooperationSection: React.FC = () => {
           mx-auto
           max-w-[850px]
           bg-[#E6FFCF]
-          border-[3px] border-[#004035]
+          border-[4px] border-[#004035]
           rounded-3xl
-          px-6 md:px-10
+          px-4 md:px-10
           py-10 md:py-12
           shadow-sm
         "

@@ -102,7 +102,7 @@ const ProductSection: React.FC = () => {
                 {/* TITLE */}
                 <h3
                   className="
-                    text-2xl font-heading font-bold text-[#004035]
+                    text-xl md:text-2xl font-heading font-bold text-[#004035]
                     text-center mb-3
                     transition-all duration-300
 
@@ -115,7 +115,7 @@ const ProductSection: React.FC = () => {
                 {/* DESC */}
                 <p
                   className="
-                     text-[13px] md:text-[14px]
+                     text-[12px] md:text-[14px]
                     leading-relaxed text-center mb-5
                     transition-all duration-300
 
@@ -128,7 +128,7 @@ const ProductSection: React.FC = () => {
                 <div className="w-full mb-12 px-3">
                   <p
                     className="
-                      text-[14px] md:text-[15px]
+                      text-[12px] md:text-[14px]
                       font-semibold
                       text-[#004035]
                       mb-2
@@ -142,7 +142,7 @@ const ProductSection: React.FC = () => {
                   {/* LIST */}
                   <ul
                     className="
-                      text-[13px] md:text-[14px]
+                      text-[12px] md:text-[14px]
                       font-semibold
                       list-disc ml-5
                       space-y-1
@@ -161,7 +161,7 @@ const ProductSection: React.FC = () => {
                 <a
                   href="#"
                   className="
-                    text-xl font-bold font-heading
+                    text-md md:text-xl font-bold font-heading
                     text-[#004035]
                     transition-all duration-300
 

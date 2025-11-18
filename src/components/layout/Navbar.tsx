@@ -50,7 +50,7 @@ const Navbar: React.FC = () => {
   return (
     <>
       {/* NAV — removed pointer-events-none so mobile overlay can receive clicks reliably */}
-      <nav className="fixed top-0 left-0 w-full z-50 bg-transparent backdrop-blur-sm">
+      <nav className="fixed top-0 left-0 w-full z-50 bg-transparent">
         <div className=" container mx-auto">
           {/* NAVBAR SHELL */}
           <div
