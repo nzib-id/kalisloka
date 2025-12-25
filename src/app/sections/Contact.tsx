@@ -15,25 +15,29 @@ const ContactSection: React.FC = () => {
         pb-24
         text-center
         text-[#E6FFCF]
+        flex flex-col
+        gap-12
       "
     >
       {/* TITLE */}
       <h2
         className="
           text-[40px] md:text-[56px] lg:text-[72px] xl:text-[96px]
-          font-heading font-semibold tracking-tight
-          mb-10
+          font-heading font-semibold
         "
       >
         Contact Us
       </h2>
+      <p className="text-sm md:text-base">
+        Tell us what you need. We’ll respond with details.
+      </p>
 
       {/* CTA BUTTONS */}
-      <div className="flex flex-col sm:flex-row justify-center items-center gap-6 mb-12">
-
+      <div className="flex flex-col sm:flex-row justify-center items-center gap-6">
         {/* Email Button */}
         <Link
           href="mailto:hello@kalisloka.com"
+          target="_blank"
           className="
             flex items-center gap-3
             bg-[#E6FFCF]
@@ -52,7 +56,8 @@ const ContactSection: React.FC = () => {
 
         {/* WhatsApp Button */}
         <Link
-          href="https://wa.me/6281234567890"
+          href="https://wa.me/message/YZZEUI7EHRHCB1"
+          target="_blank"
           className="
             flex items-center gap-3
             border border-[#E8FAD9]
@@ -94,7 +99,6 @@ const ContactSection: React.FC = () => {
           </div>
         </div>
       </div>
-
     </section>
   );
 };

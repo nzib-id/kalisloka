@@ -2,29 +2,34 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 
 const products = [
   {
+    title: "Banana Leaf",
+    image: "/images/banana.png",
+    desc: "Food-grade banana leaf for packaging, culinary, and horeca.",
+    points: [
+      "Sheets / rolls",
+      "Clean & graded",
+      "Adjustable cutting by request",
+      "Food wrapping use",
+      "Fresh handling",
+    ],
+    Link: "https://banana.kalisloka.com",
+  },
+  {
     title: "Fresh Ginger",
-    image: "/images/ginger.svg",
+    image: "/images/ginger.png",
     desc: "Cleaned and graded fresh ginger supplied as raw material for processing, extraction, and blending.",
     points: [
       "Clean & graded",
       "Suitable for food & beverages",
       "Herbal processing ready",
       "Traceable sourcing",
-    ],
-  },
-  {
-    title: "Banana Leaf",
-    image: "/images/banana.svg",
-    desc: "Food-grade banana leaf for packaging, culinary, and horeca.",
-    points: [
-      "Sheets / rolls",
-      "Custom cutting",
-      "Food wrapping use",
       "Fresh handling",
     ],
+    Link: "https://ginger.kalisloka.com",
   },
 ];
 
@@ -46,7 +51,8 @@ const ProductSection: React.FC = () => {
 
       {/* GRID PRODUCT */}
       <div className="container mx-auto px-6 md:px-10">
-        <div className="
+        <div
+          className="
           grid
           grid-cols-1
           md:grid-cols-2
@@ -55,10 +61,13 @@ const ProductSection: React.FC = () => {
           items-stretch
           max-w-[850px]
           mx-auto
-                  ">
+                  "
+        >
           {products.map((item, idx) => (
-            <div
+            <Link
+              href={item.Link}
               key={idx}
+              target="_blank"
               className="
                 group
                 w-full
@@ -75,16 +84,14 @@ const ProductSection: React.FC = () => {
                 hover:shadow-xl
               "
             >
-              <div className="flex flex-col items-center">
-
+              <div className="flex flex-col items-center gap-4 md:gap-7">
                 {/* IMAGE WRAPPER */}
                 <div
                   className="
                     rounded-3xl
-                    shadow-md overflow-hidden mb-6
-                    border-[3px] border-[#004035]
-                    transition-all duration-300
-
+                    shadow-md overflow-hidden
+                    border-4 border-[#004035]
+                    transition-all duration-200
                     group-hover:border-[#E6FFCF]
                   "
                 >
@@ -102,8 +109,8 @@ const ProductSection: React.FC = () => {
                 {/* TITLE */}
                 <h3
                   className="
-                    text-xl md:text-2xl font-heading font-bold text-[#004035]
-                    text-center mb-3
+                    text-3xl font-heading font-bold text-[#004035]
+                    text-center
                     transition-all duration-300
 
                     group-hover:text-[#E6FFCF]
@@ -116,7 +123,7 @@ const ProductSection: React.FC = () => {
                 <p
                   className="
                      text-[12px] md:text-[14px]
-                    leading-relaxed text-center mb-5
+                    leading-relaxed text-center
                     transition-all duration-300
 
                     group-hover:text-[#E6FFCF]
@@ -125,13 +132,13 @@ const ProductSection: React.FC = () => {
                   {item.desc}
                 </p>
 
-                <div className="w-full mb-12 px-3">
+                <div className="w-full mb-12 px-3 text-xs md:text-base">
                   <p
                     className="
-                      text-[12px] md:text-[14px]
+                     
                       font-semibold
                       text-[#004035]
-                      mb-2
+                      mb-2 md:mb-3
                       transition-all duration-300
                       group-hover:text-[#E6FFCF]
                     "
@@ -142,10 +149,9 @@ const ProductSection: React.FC = () => {
                   {/* LIST */}
                   <ul
                     className="
-                      text-[12px] md:text-[14px]
                       font-semibold
                       list-disc ml-5
-                      space-y-1
+                      space-y-2 md:space-y-3
 
                       transition-all duration-300
                       group-hover:text-[#E6FFCF]
@@ -158,22 +164,19 @@ const ProductSection: React.FC = () => {
                 </div>
 
                 {/* CTA */}
-                <a
-                  href="#"
+                <p
                   className="
                     text-md md:text-xl font-bold font-heading
                     text-[#004035]
                     transition-all duration-300
-
+                    tracking-wide
                     group-hover:text-[#E6FFCF]
                   "
                 >
                   View Full Product Details ›
-                </a>
-
+                </p>
               </div>
-            </div>
-
+            </Link>
           ))}
         </div>
       </div>

@@ -1,13 +1,27 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import React, { useState, useEffect } from "react";
+
+type NavItem = {
+  label: string;
+  href: string;
+  cta?: boolean;
+};
+
+const NAV_ITEMS: NavItem[] = [
+  { label: "About us", href: "#about" },
+  { label: "Products", href: "#products" },
+  { label: "Quality & Handling", href: "#services" },
+  { label: "Supply & Cooperation", href: "#cooperation" },
+  { label: "Send Inquiry", href: "#contact", cta: true },
+];
 
 const Navbar: React.FC = () => {
   const [open, setOpen] = useState(false);
   const [green, setGreen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
-  // Prevent hydration mismatch
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -16,28 +30,22 @@ const Navbar: React.FC = () => {
     if (!mounted) return;
 
     const handleScroll = () => {
-      const hero = document.getElementById("hero");
       const about = document.getElementById("about");
       const contact = document.getElementById("contact");
 
-      if (!hero || !about || !contact) return;
+      if (!about || !contact) return;
 
       const scrollY = window.scrollY;
-
       const aboutTop = about.offsetTop - 120;
       const contactTop = contact.offsetTop - 150;
 
       if (scrollY >= contactTop) {
         setGreen(false);
-        return;
-      }
-
-      if (scrollY >= aboutTop && scrollY < contactTop) {
+      } else if (scrollY >= aboutTop) {
         setGreen(true);
-        return;
+      } else {
+        setGreen(false);
       }
-
-      setGreen(false);
     };
 
     handleScroll();
@@ -49,26 +57,21 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-      {/* NAV — removed pointer-events-none so mobile overlay can receive clicks reliably */}
       <nav className="fixed top-0 left-0 w-full z-50 bg-transparent">
-        <div className=" container mx-auto">
-          {/* NAVBAR SHELL */}
+        <div className="container mx-auto">
           <div
             className={`
-              pointer-events-auto
-              w-full
-              transition-all duration-500
-              flex flex-col
-              ${green
-                ? "bg-[#d0e9bd]/80 px-6 border border-[#A3D6A1]/30 rounded-full backdrop-blur-md mt-3 shadow-sm"
-                : "bg-transparent border-transparent mt-5 backdr"
+              w-full transition-all duration-500 flex flex-col
+              ${
+                green
+                  ? "bg-[#d0e9bd]/80 px-6 border border-[#A3D6A1]/30 rounded-full backdrop-blur-md mt-3 shadow-sm"
+                  : "bg-transparent mt-5"
               }
             `}
           >
-            {/* NAV CONTENT */}
             <div className="flex items-center justify-between w-full py-4 md:py-5">
               {/* LOGO */}
-              <a href="#hero" className="transition-opacity duration-300">
+              <a href="#hero" onClick={() => setOpen(false)}>
                 <img
                   src={green ? "/logo-green.svg" : "/logo-white.svg"}
                   alt="Kalisloka Logo"
@@ -76,27 +79,45 @@ const Navbar: React.FC = () => {
                 />
               </a>
 
-              {/* DESKTOP MENU */}
+              {/* DESKTOP MENU (incl. CTA) */}
               <div
                 className={`
-                  hidden md:flex items-center space-x-20 text-sm font-semibold
-                  transition-colors duration-300
+                  hidden md:flex items-center gap-10 text-sm  font-medium
                   ${green ? "text-[#004035]" : "text-white"}
                 `}
               >
-                <a href="#about" className="hover:opacity-70 transition">About us</a>
-                <a href="#products" className="hover:opacity-70 transition">Products</a>
-                <a href="#contact" className="hover:opacity-70 transition">Contact</a>
+                {NAV_ITEMS.map((item) =>
+                  item.cta ? (
+                    <a
+                      key={item.label}
+                      href={item.href}
+                      className={`${
+                        green
+                          ? "bg-[#004035] text-[#E6FFCF]"
+                          : "bg-[#E6FFCF] text-[#004035]"
+                      } rounded-full text-sm font-semibold px-5 py-2 hover:opacity-90 transition-all`}
+                    >
+                      {item.label}
+                    </a>
+                  ) : (
+                    <a
+                      key={item.label}
+                      href={item.href}
+                      className="hover:opacity-70 transition"
+                    >
+                      {item.label}
+                    </a>
+                  )
+                )}
               </div>
 
               {/* MOBILE BURGER */}
               <button
                 type="button"
                 aria-label={open ? "Close menu" : "Open menu"}
-                className={`
-                  md:hidden text-3xl transition-colors duration-300
-                  ${green ? "text-[#004035]" : "text-white"}
-                `}
+                className={`md:hidden text-3xl ${
+                  green ? "text-[#004035]" : "text-white"
+                }`}
                 onClick={() => setOpen((v) => !v)}
               >
                 {open ? "✕" : "☰"}
@@ -106,61 +127,61 @@ const Navbar: React.FC = () => {
         </div>
       </nav>
 
-      {/* MOBILE MENU OVERLAY — placed outside <nav> so it's not blocked by parent pointer settings */}
-      {open && (
+      {/* MOBILE MENU (animated) */}
+      <div
+        className={`
+          md:hidden fixed inset-0 z-50 flex items-center justify-center
+          transition-all duration-300 ease-out
+          ${
+            open
+              ? green
+                ? "bg-[#d0e9bd]/50 text-[#004035] backdrop-blur-md opacity-100 pointer-events-auto"
+                : "bg-black/50 text-white backdrop-blur-md opacity-100 pointer-events-auto"
+              : "opacity-0 pointer-events-none"
+          }
+        `}
+        onClick={() => setOpen(false)}
+      >
         <div
-          // overlay covers full screen and always receives pointer events
           className={`
-            md:hidden fixed inset-0 z-50 flex items-center justify-center
-            ${green ? "bg-[#d0e9bd] text-[#004035]" : "bg-black/80 text-white backdrop-blur-md"}
+            relative w-full h-full flex flex-col items-center justify-center
+            transition-all duration-300 ease-out
+            ${open ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"}
           `}
-          // clicking on the overlay background (outside menu column) closes the menu
-          onClick={() => setOpen(false)}
         >
-          {/* menu panel — stopPropagation so clicks inside don't close */}
-          <div
-            className="w-full h-full flex flex-col items-center justify-center p-6"
-            onClick={(e) => e.stopPropagation()}
+          {/* CLOSE BUTTON */}
+          <button
+            type="button"
+            onClick={() => setOpen(false)}
+            className={`
+              absolute top-6 right-6 text-3xl
+              ${green ? "text-[#004035]" : "text-white"}
+            `}
+            aria-label="Close menu"
           >
-            {/* Close button top-right inside panel (redundant with overlay click) */}
-            <button
-              type="button"
-              onClick={() => setOpen(false)}
-              className={`
-                absolute top-6 right-6 text-3xl
-                ${green ? "text-[#004035]" : "text-white"}
-              `}
-              aria-label="Close menu"
-            >
-              ✕
-            </button>
+            ✕
+          </button>
 
+          {NAV_ITEMS.map((item) => (
             <a
-              href="#about"
+              key={item.label}
+              href={item.href}
               onClick={() => setOpen(false)}
-              className="text-2xl font-medium mb-6 hover:opacity-80 transition"
+              className={
+                item.cta
+                  ? `${
+                      green
+                        ? "bg-[#004035] text-[#E6FFCF]"
+                        : "bg-[#E6FFCF] text-[#004035]"
+                    } mt-4 rounded-full px-6 py-3 text-xl font-semibold hover:opacity-90 transition`
+                  : "text-2xl font-medium mb-6 hover:opacity-80 transition"
+              }
             >
-              About us
+              {item.label}
             </a>
-
-            <a
-              href="#products"
-              onClick={() => setOpen(false)}
-              className="text-2xl font-medium mb-6 hover:opacity-80 transition"
-            >
-              Products
-            </a>
-
-            <a
-              href="#contact"
-              onClick={() => setOpen(false)}
-              className="text-2xl font-medium mb-6 hover:opacity-80 transition"
-            >
-              Contact
-            </a>
-          </div>
+          ))}
         </div>
-      )}
+      </div>
     </>
   );
 };

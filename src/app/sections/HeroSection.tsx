@@ -9,7 +9,7 @@ const HeroSection: React.FC = () => {
       className="
         relative
         w-full
-        min-h-[110vh] sm:min-h-[110vh] md:min-h-[120vh] lg:min-h-[135vh]
+        min-h-[110vh] sm:min-h-[110vh] md:min-h-[120vh] lg:min-h-[125vh]
         flex
         items-center
         overflow-hidden
@@ -33,23 +33,21 @@ const HeroSection: React.FC = () => {
       />
 
       {/* OVERLAY agar teks lebih jelas (mirip screenshot) */}
-      <div className="absolute inset-0 bg-black/20 md:bg-black/5"></div>
+      <div className="absolute inset-0 bg-black/20 md:bg-black/20"></div>
 
       {/* CONTENT */}
       <div className="relative z-10 container mx-auto ">
-        <div className="max-w-[650px]
-          text-left
-          pt-0
-          lg:-mt-10
-          xl:-mt-16">
-
+        <div
+          className="max-w-[650px]
+          text-left h-screen flex flex-col justify-center pb-[200px] lg:pb-[300px]
+          "
+        >
           {/* HEADLINE */}
           <h1
             className="
               text-white
-              text-[32px] sm:text-[40px] md:text-[52px] lg:text-[60px]
+              text-3xl lg:text-6xl
               font-heading
-              leading-tight
               mb-6
             "
           >
@@ -64,23 +62,27 @@ const HeroSection: React.FC = () => {
               text-white
               leading-relaxed
               mb-10
-              max-w-[520px]
+              max-w-xl
             "
           >
-            We supply selected agricultural raw materials with clear specifications, reliable handlings, and structured cooperation for commercial buyers.
+            We supply selected agricultural raw materials with clear
+            specifications, reliable handlings, and structured cooperation for
+            commercial buyers.
           </p>
 
           {/* CTA BUTTONS */}
           <div className="flex flex-wrap items-center gap-4 sm:gap-6">
-            <Button variant="primary" className="px-6 py-3 text-sm">
-              Request Specifications & Pricing
-            </Button>
-
-            <Button variant="outline-light" className="px-6 py-3 text-sm">
-              Ask About Trial Shipment
-            </Button>
+            <a href="#products" className="rounded-full">
+              <Button variant="primary" className="px-6 py-3 text-sm">
+                Discover Products
+              </Button>
+            </a>
+            <a href="#about" className="rounded-full">
+              <Button variant="secondary" className="px-6 py-3 text-sm">
+                Learn More
+              </Button>
+            </a>
           </div>
-
         </div>
       </div>
     </section>

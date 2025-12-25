@@ -14,10 +14,6 @@ export const metadata: Metadata = {
   title: "Kalisloka",
   description:
     "Official website of Kalisloka — Agricultural Raw Material Supply & Trade Partner.",
-  icons: {
-    icon: "/icons/favicon.svg",
-    shortcut: "/icons/favicon.svg",
-  },
 };
 
 /* ====== ROOT LAYOUT ====== */
@@ -39,9 +35,7 @@ export default function RootLayout({
         />
       </head>
 
-      <body className={`${montserrat.variable} font-body`}>
-        {children}
-      </body>
+      <body className={`${montserrat.variable} font-body`}>{children}</body>
     </html>
   );
 }
