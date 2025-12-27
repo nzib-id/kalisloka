@@ -135,7 +135,7 @@ const ProductSection: React.FC = () => {
                 <div className="w-full mb-12 px-3 text-xs md:text-base">
                   <p
                     className="
-                     
+
                       font-semibold
                       text-[#004035]
                       mb-2 md:mb-3
@@ -166,15 +166,26 @@ const ProductSection: React.FC = () => {
                 {/* CTA */}
                 <p
                   className="
+                    inline-flex items-baseline gap-1
                     text-md md:text-xl font-bold font-heading
                     text-[#004035]
-                    transition-all duration-300
                     tracking-wide
+                    transition-all duration-300
                     group-hover:text-[#E6FFCF]
                   "
                 >
-                  View Full Product Details ›
+                  <span>View Full Product Details</span>
+
+                  <img
+                    src="/icons/arrow.svg"
+                    alt=""
+                    className="
+                      w-[0.85em] h-[0.85em]
+                      translate-y-[0.08em]
+                    "
+                  />
                 </p>
+
               </div>
             </Link>
           ))}

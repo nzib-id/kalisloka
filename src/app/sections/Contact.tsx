@@ -60,7 +60,7 @@ const ContactSection: React.FC = () => {
           target="_blank"
           className="
             flex items-center gap-3
-            border border-[#E8FAD9]
+            border-[4px] border-[#E8FAD9]
             text-[#E8FAD9]
             rounded-full
             px-8 py-3
