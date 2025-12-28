@@ -24,7 +24,7 @@ const SupplyCooperationSection: React.FC = () => {
   return (
     <section
       id="cooperation"
-      className="w-full bg-[#E6FFCF] pt-20 md:pt-28 pb-20 md:pb-28 container mx-auto"
+      className="w-full bg-[#E6FFCF] pt-20 md:pt-28 pb-20 md:pb-28 container mx-auto px-6 md:px-10"
     >
       {/* TITLE */}
       <div className="text-center mb-10 md:mb-14">
