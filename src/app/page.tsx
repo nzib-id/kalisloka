@@ -13,12 +13,14 @@ import SupplyCooperationSection from "./sections/SupplyCooperationSection";
 const HomePage: React.FC = () => {
   return (
     <Layout>
-      <HeroSection />
-      <AboutSection />
-      <ProductSection />
-      <ServiceSection />
-      <SupplyCooperationSection />
-      <ContactSection />
+      <main>
+        <HeroSection />
+        <AboutSection />
+        <ProductSection />
+        <ServiceSection />
+        <SupplyCooperationSection />
+        <ContactSection />
+      </main>
     </Layout>
   );
 };

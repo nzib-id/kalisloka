@@ -10,11 +10,28 @@ const montserrat = Montserrat({
 });
 
 /* ====== METADATA ====== */
+
 export const metadata: Metadata = {
-  title: "Kalisloka",
+  metadataBase: new URL("https://kalisloka.com"),
+  title: {
+    default: "Kalisloka",
+    template: "%s | Kalisloka",
+  },
   description:
-    "Official website of Kalisloka — Agricultural Raw Material Supply & Trade Partner.",
+    "Kalisloka is an agricultural raw material supply and trade partner serving industrial and business needs.",
+  openGraph: {
+    title: "Kalisloka",
+    description:
+      "Agricultural raw material supply and trade partner for industrial and business sectors.",
+    type: "website",
+  },
 };
+
+// export const metadata: Metadata = {
+//   title: "Kalisloka",
+//   description:
+//     "Official website of Kalisloka — Agricultural Raw Material Supply & Trade Partner.",
+// };
 
 /* ====== ROOT LAYOUT ====== */
 export default function RootLayout({
